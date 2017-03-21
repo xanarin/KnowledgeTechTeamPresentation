@@ -1,0 +1,20 @@
+baseurl = "https://maven.848.productions"
+languageCode = "en-us"
+title = "Maven Tutorial"
+theme = "hyde"
+copyright = "Will Sloan"
+
+[Author]
+	name = "Tech Team 1"
+
+[Permalinks]
+	blog = "/:year/:month/:filename/"
+	code = "/:filename/"
+
+[Taxonomies]
+	tag = "tags"
+	series = "series"
+	series-desc = "series-desc"
+
+[params]
+	description = "A Tutorial for Maven"
