@@ -1,5 +1,4 @@
-npf.io
+Maven Tech Team Tutorial
 ===
 
-This is the code behind the site [npf.io](http://npf.io), used by
-[Hugo](http://hugo.spf13.com) to generate a static html site.
+This is the code that powers the single web page that comprises the tutorial for Maven.
