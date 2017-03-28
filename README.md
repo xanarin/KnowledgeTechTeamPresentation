@@ -12,9 +12,10 @@ This is the code that powers the single web page and presentation that comprises
 ## Developing the presentation
 1. First, install [node](https://nodejs.org/en/)
 2. Go into the `presentation/` folder, and run the command `npm install`
-3. Run the command `grunt serve` to start the webserver.
-3. The command will being serving the site at the specified address and port.
-4. As you change the content in the files, the page will automatically reload and reflect your changes.
+3. Run `npm install -g grunt` to globally install the **grunt** tool.
+4. Run the command `grunt serve` to start the webserver.
+5. The command will being serving the site at the specified address and port.
+6. As you change the content in the files, the page will automatically reload and reflect your changes.
 
 ## Changing Website Content
 The file you probably want to change is **website/content/blog/maven-tutorial.md**. It is written in [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet), but you can also place HTML directly into the file (for images and such).
