@@ -46,7 +46,7 @@ repositories:
 
 - Located on the internet
 - Second location maven searches for dependencies
-- Created by the apache maven community 
+- Created by the Apache Maven community 
 - Listing of common libraries can be viewed at [search.maven.org](http://search.maven.org/#browse)
 
 ---
@@ -90,11 +90,39 @@ OS name: "mac os x", version: "10.12.3", arch: "x86_64", family: "mac"
 	- IDEs for Java are very common
 	- IDE wrappers can make complex tools easier to use
 
-- Prebuilt: IntelliJ
+- Built In: IntelliJ
 <img src="https://pbs.twimg.com/profile_images/803204448675856388/6eqoPNuy.jpg" style="margin-right=10%; float: right; position=relative" width=20% />
 <img src="https://devcentral.f5.com/Portals/0/images/metapost/News-Articles/Joe/2010/Sep/WLW-GettingStartedWithiControlAndJavaSetting_8C5F-eclipse_2.png" style="margin-right=10%; float: right; position=relative" width=20% />
 
 - Plugin: Eclipse
+
+---
+
+## IntelliJ - New Project
+- In the _New Project_ dialog, select **Maven** in the menu on the left.
+
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/creat_maven_project.png" width=50% />
+
+---
+
+### IntelliJ - New Project Continued
+- Specify Properties for your Maven Project
+
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj.png" width=60% />
+
+---
+
+### IntelliJ - New Project Continued
+- Specify Project Name and Location, then click Finish
+
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj_page2.png" width=70% />
+
+---
+
+## IntelliJ - Existing Project
+- Add a POM file to the root directory
+- Reload project
+  - IntelliJ will detect the new file and display a dialog
 
 ---
 
@@ -123,7 +151,7 @@ my-app
 ### Maven in a New Project continued
 
 - `AppTest.java` imports JUnit libraries
-  - You  don't have those downloaded, so you cannot just run javac!
+  - You  don't have those downloaded, so you cannot just run `javac`!
   - How would you go out and download them?  
   - Enter Maven and the other file you generated: `pom.xml`.
 
@@ -166,9 +194,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 - **project** - Mandatory root element.
   - **groupId** - Name of the group the project belongs to. Collection of artifacts.
-  - **artifactId** - Unit of inidivdual project under a group.
+  - **artifactId** - Unit of individual project under a group.
   - **packaging** - Format of how to package project when `mvn package` is run.
-  - **dependencies** - Root for list of depenencies.
+  - **dependencies** - Root for list of dependencies.
     - **dependency** - Individual unit of a project dependency. Needs a `groupId`, `artifactId`, and a `version`.
     - **scope** - Scope level for a project or dependency. Can be `compile`, `runtime`, `test`, and `system`.
 
