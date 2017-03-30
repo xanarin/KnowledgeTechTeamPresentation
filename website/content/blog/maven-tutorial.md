@@ -29,7 +29,12 @@ and ArtifactId.
 <img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj.png"/>
 
 Specify project name and location, and click **Finish**.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj_page2.png"/>
 
 Above images are from
 https://www.jetbrains.com/help/idea/2017.1/getting-started-with-maven.html.
 
+To convert an existing Java project to a Maven project, simply add a POM
+file to the project root directory, then reload the project. IntelliJ
+will detect the POM file and display a dialog that allows you to add
+a Maven facet to the project.
