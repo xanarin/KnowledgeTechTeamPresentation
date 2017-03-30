@@ -11,7 +11,7 @@ type = "post"
 
 ## Overview
 
-Maven is a build automation tool for Java. Essentially it's to Java what
+Maven is a build automation tool for Java. Essentially, it's to Java what
 makefiles are to C. Maven dynamically downloads Java libraries and
 plug-ins from Maven repositories, then stores them in a local cache.
 
