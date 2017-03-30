@@ -7,7 +7,8 @@
 <br>
 ### 1. What is Maven?
 ### 2. How do I use Maven?
-### 3. Your first Maven project
+### 3. What do I need to use Maven?
+### 4. Your first Maven project
 
 <br><br>
 _TL;DR: Maven is a project management tool based on the Project Object Model (POM)_
@@ -58,11 +59,42 @@ repositories:
 
 ---
 
-## IntelliJ
+## Tooling for Maven
 
-- In the tutorial it is assumed you are using IntelliJ IDEA
+- To use Maven, you need:
+	- Java
+	- Basic command line knowledge
 
-### Why?
+---
+
+## Installing Maven
+
+- Download release from [Apache Maven](https://maven.apache.org/download.cgi) website
+- Extract archive
+- Add `bin` directory to PATH
+- Run `mvn -v`, and you should see:
+```bash
+Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T11:41:47-05:00)
+Maven home: /usr/local/Cellar/maven/3.3.9/libexec
+Java version: 1.8.0_73, vendor: Oracle Corporation
+Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.12.3", arch: "x86_64", family: "mac"
+```
+
+---
+
+## IDE Integration
+
+- What if I want Maven integrated with my IDE?
+	- IDEs for Java are very common
+	- IDE wrappers can make complex tools easier to use
+
+- Prebuilt: IntelliJ
+<img src="https://pbs.twimg.com/profile_images/803204448675856388/6eqoPNuy.jpg" style="margin-right=10%; float: right; position=relative" width=20% />
+<img src="https://devcentral.f5.com/Portals/0/images/metapost/News-Articles/Joe/2010/Sep/WLW-GettingStartedWithiControlAndJavaSetting_8C5F-eclipse_2.png" style="margin-right=10%; float: right; position=relative" width=20% />
+
+- Plugin: Eclipse
 
 ---
 
