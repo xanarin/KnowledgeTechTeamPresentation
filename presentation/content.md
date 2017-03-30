@@ -1,146 +1,158 @@
-## LSM Tree:
-### Faster Write Storage for Databases
+## Maven Tutorial
+###A Tutorial by Ben Oberhaus, Maggie Gilbert, Reid Fu, Tyler Zeller, and Will Sloan
 
 ---
 
-## Overview of Project
-- Java was used to implement a LSM tree and compare its performance to an open-source B+ tree implementation
-- Reference Tree
-- Implemented LSM Tree
-- Results
-- Analysis
+## What is Maven?
+
+Maven is a build automation tool for Java. Essentially, it's to Java what
+makefiles are to C. Maven dynamically downloads Java libraries and
+plug-ins from Maven repositories, then stores them in a local cache.
 
 ---
 
-## Reference B+ Tree
-- bplustreedotnet Project
-- Project page can be found at http://bplusdotnet.sourceforge.net
-- Written in C#, Java, and Python
-- Uses strings as both key and value
-- One of the only open source implementations of B+ tree on disk
+## Assumptions
+
+This tutorial assumes you are using IntelliJ IDEA. Instructions on how
+to get IDEA can be found on the JetBrains website, and is beyond the
+scope of this tutorial. Since Maven comes with IDEA, this tutorial will
+not cover Maven installation. For installation instructions, visit
+https://www.tutorialspoint.com/maven/maven_environment_setup.htm.
 
 ---
 
-## My LSM Tree
-- Written in Java
-- Supported Key, Value pairs of two Longs (-2^63, 2^63 - 1)
-- C0 level cache uses the Standard Library Red-Black Tree
-- C1 and C2 level caches store data serially
-- Data is stored on disk using Google's ProtocolBuffers
-- No caching supported
+### Maven In A New Project
+
+Maven can be added to a project on project creation. To create a
+Maven project, go to **File > New > Project**. A dialog will appear.
+Select **Maven** in the menu on the left, then select desired project
+JDK. Click **Next**.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/creat_maven_project.png"/>
 
 ---
 
-## My LSM Tree
-- Available methods:
-  - get(key)
-  - put(key, value)
-  - delete(key)
-  - close()
+###### Maven in a New Project continued
+
+If you want, specify properties for your Maven project. If your work is
+not intended for public use, you can use placeholder strings for GroupId
+and ArtifactId.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj.png"/>
 
 ---
 
-## Protocol Buffers
-- Created by Google as a way to serialize data cross-platform and efficiently
-- Uses a special DSL to write .proto files to specify Protocol
-- Generator then generates language-specific files
-  - Supported languages include C++, C#, Go, Java, Python and Node
-- High performance compared to Java's included Serialization mechanism
-  - Does not include Object information
-  - Write binary data, very fast parsing
+###### Maven in a New Project continued
+
+Specify project name and location, and click **Finish**.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj_page2.png"/>
+
+*Above images are from https://www.jetbrains.com/help/idea/2017.1/getting-started-with-maven.html.*
 
 ---
 
-## Benchmark Methodology
-- Generated Longs (-2^63, 2^63 - 1) in Java.
-- Each Long in Java has a size of 16 bytes
-- Dataset was inserted into each of the databases
-- 1000 Random Queries were run against each database
-- Range query of 100 elements were run against each database
-- C0 Size = 500,000
-- C1 Size = 6,000,000
+### Maven In An Existing Project
+
+To convert an existing Java project to a Maven project, simply add a POM
+file to the project root directory, then reload the project. IntelliJ
+will detect the POM file and display a dialog that allows you to add
+a Maven facet to the project.
 
 ---
 
-## Benchmarks (25,000,000 elements)
-|              | LSM Tree | B+ Tree    |
-|:---          | :------------- | :------------- |
-| Insert       | 105.8       | > 1000 |
-| Get (100)    | 235.1       | unknown |
-| Range (100)  | 297.9       | unknown |
+## Your First Maven Project
 
-_B+ Tree storage file size was 5.7 GB at stop time (1000 seconds)_  
-_Total LSM Storage was 250 MB_
+In a fresh directory run:
 
----
+```bash 
+mvn archetype:generate -DgroupId=com.5914maven.app1
+ -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart
+ -DinteractiveMode=false
+```
 
-## Insert Benchmark
+```
+my-app
+| -- pom.xml
+` -- src
+     | -- main
+     | ...  -- App.java
+     | -- test
+     ` ... -- AppTest.java
+```
 
-![Insert Performance](images/chart_insert.png)
-
----
-
-## Query Benchmark
-
-![Get Performance](images/chart_query.png)
-
----
-
-## Range Benchmark
-
-![Insert Performance](images/chart_range.png)
+You can see the resulting directory structure contains two source files `App.java` and `AppTest.java`. Opening them reveals that this is your standard Java Hello World! project. 
 
 ---
 
-## Benchmark Data
+###### Maven in a New Project continued
 
-| N        | LSM Insert | LSM Get | LSM Range | B+ Insert | B+ Get | B+ Range |
-|:-------- |:-----------|---------|-----------|-----------|--------|----------|
-| 750000   | 1.813      | 9.855   | 1.35      | 41.974    | 0.034  | 0.001    |
-| 1000000  | 3.137      | 29.188  | 2.707     | 57.362    | 0.106  | 0.002    |
-| 2000000  | 4.862      | 61.793  | 5.99      | 127.702   | 0.204  | 0.002    |
-| 5000000  | 16.54      | 146.884 | 15.481    | 376.943   | 0.202  | 0.002    |
-| 10000000 | 39.936     | 239.919 | 30.906    | 2312.523  | 0.633  | 0.025    |
+In `AppTest.java` you see it imports JUnit libraries. You realize you don't have those downloaded, so you cannot just run javac.  
+How would you go out and download them?  
+Enter Maven and the other file you generated: `pom.xml`.
 
 ---
 
-## Caveats
-- Google's Protocol buffers were not built for large-scale data Serialization
-- 2nd Level Disk Data Storage had to be completely read into memory in order to find data stored within it.
-  - 80% of data stored in this layer, so it is often necessary to go to this level to find data
+## The Project Object Model
+
+Every Maven project requires a `pom.xml` file. This file contains everything Maven needs to know about your project. Here is an example of a POM file:
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"   
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
+  http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+    
+    <modelVersion>4.0.0</modelVersion>  
+        
+    <groupId>com.5914maven.app1</groupId>  
+    <artifactId>my-application1</artifactId>  
+    <version>1.0</version>  
+    <packaging>jar</packaging>
+    
+    <name>Maven Quick Start Archetype</name>  
+    <url>http://maven.apache.org</url>
+    
+    <dependencies>  
+        <dependency>  
+            <groupId>junit</groupId>  
+            <artifactId>junit</artifactId>  
+            <version>4.8.2</version>  
+            <scope>test</scope>  
+        </dependency>  
+    </dependencies>  
+                                                              
+</project>  
+```
 
 ---
 
-## Analysis
-- My implementation is efficient, but not very scalable with queries
-- Even though B+ tree was overall slower, its range and general get times were equivalent to the LSM Tree, meaning that by comparison these operations were faster
-- Characteristics remain true to what we studied in class
+## POM elements
+
+- `project` - Mandatory root element.
+- `groupId` - Name of the group the project belongs to. Collection of artifacts.
+- `artifactId` - Unit of inidivdual project under a group.
+- `packaging` - Format of how to package project when `mvn package` is run.
+- `dependencies` - Root for list of depenencies.
+- `dependency` - Individual unit of a project dependency. Needs a `groupId`, `artifactId`, and a `version`.
+- `scope` - Scope level for a project or dependency. Can be `compile`, `runtime`, `test`, and `system`.
 
 ---
 
-## What I Learned
-- B+ data structure
-- Serializing and writing data to the disk
-- Dealing with permanent data storage
-- VisualVM for optimization of my implementation
-- Database development is very difficult and nuanced
+###### The Project Object Model continued
+
+Maven parses `pom.xml` when most `mvn` commands are run. For example, when you run `mvn clean compile` for the first time on the above file, Maven goes out to the local, central, and remote repositories looking for a `groupId` of `junit` that has an `artifactId` of `junit` with a `version` of `4.8.2`. When it finds the correct dependency, it downloads it to the proper scope and manages it for you for subsequent runs of the project.
 
 ---
 
-## Future improvements to LSM Tree
-- Generalize structure for any data type
-- Batch delete operations
-- Batch get operations based on demand (timeout)
-- Keep cache of recently accessed data (LRU or LIRS)
+## Running Your First Maven Project
+
+At the top level of the your project (where `pom.xml` lives), run ``mvn clean compile``. You will see some output from downloading libraries the first time.  
+ The first run will be slower than most consecutive runs due to downloading libraries for the first time.  
+Run `java com.5914maven.app1.App` to see `Hello World!` appear!!!  
 
 ---
 
-## Batch Mode Queries (N = 1,000,000)
-|                | Get (1000)          | Range (1000)  |
-| :------------- | :-------------      | :------------ |
-| LSM            | 30.468              | 27.01         |
-| LSM (Batch)    | 1.054               | 2.126         |
-| B+             | 0.185               | 0.017         |
+###### Running Your First Maven Project continued
+
+You can also package the app into your desired format (we are using jar, defined in the POM) by running `mvn package`.  
+Run with `java -cp target/my-app-1.0-SNAPSHOT.jar com.5914maven.app1.App`.  
 
 ---
 
