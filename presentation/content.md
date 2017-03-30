@@ -11,6 +11,43 @@ plug-ins from Maven repositories, then stores them in a local cache.
 
 ---
 
+## How does it work?
+
+Maven handles project dependencies by searching and linking them from several
+repositories (stores for .jar files). There are three different types:
+
+1. Local
+2. Central
+3. Remote
+
+---
+
+## Local Repositories
+
+A local repository is located in your local system. It is created by the maven when you run any maven command.
+This is the location that maven looks for first when looking for dependencies
+your project needs.
+
+---
+
+## Central Repositories
+
+A central repository is located on the internet and is the second stop maven searches for dependencies that you
+specified. It has been created by the apache maven community itself,
+so there's nothing you need to do to set it up. You can locate the repo at http://repo1.maven.org/maven2/.
+The central repository contains a lot of common libraries that can be viewed at http://search.maven.org/#browse.
+
+---
+
+## Remote Repositories
+
+A remote repository is located on the web as well, but is missing from the central repo.
+This is the third and last location maven will search for dependencies. Most
+libraries may be missing from the central repo, such as the JBoss library, so we
+ need to define a remote repository in our project if we wish to use these dependencies.
+
+---
+
 ## Assumptions
 
 This tutorial assumes you are using IntelliJ IDEA. Instructions on how
@@ -62,7 +99,7 @@ a Maven facet to the project.
 
 In a fresh directory run:
 
-```bash 
+```bash
 mvn archetype:generate -DgroupId=com.5914maven.app1
  -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart
  -DinteractiveMode=false
@@ -78,7 +115,7 @@ my-app
      ` ... -- AppTest.java
 ```
 
-You can see the resulting directory structure contains two source files `App.java` and `AppTest.java`. Opening them reveals that this is your standard Java Hello World! project. 
+You can see the resulting directory structure contains two source files `App.java` and `AppTest.java`. Opening them reveals that this is your standard Java Hello World! project.
 
 ---
 
@@ -98,17 +135,17 @@ Every Maven project requires a `pom.xml` file. This file contains everything Mav
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
   http://maven.apache.org/xsd/maven-4.0.0.xsd">  
-    
+
     <modelVersion>4.0.0</modelVersion>  
-        
+
     <groupId>com.5914maven.app1</groupId>  
     <artifactId>my-application1</artifactId>  
     <version>1.0</version>  
     <packaging>jar</packaging>
-    
+
     <name>Maven Quick Start Archetype</name>  
     <url>http://maven.apache.org</url>
-    
+
     <dependencies>  
         <dependency>  
             <groupId>junit</groupId>  
@@ -117,7 +154,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             <scope>test</scope>  
         </dependency>  
     </dependencies>  
-                                                              
+
 </project>  
 ```
 
