@@ -7,6 +7,8 @@ type = "post"
 	name = "Tech Group 1"
 	uri = "https://plus.google.com/115818189328363361527"
 +++
+# Introduction to Maven
+
 ## Overview
 
 Maven is a build automation tool for Java. Essentially it's to Java what
@@ -18,7 +20,7 @@ plug-ins from Maven repositories, then stores them in a local cache.
 This tutorial assumes you are using IntelliJ IDEA. Instructions on how
 to get IDEA can be found on the JetBrains website, and is beyond the
 scope of this tutorial. Since Maven comes with IDEA, this tutorial will
-not cover Maven installation. For installation instructions, see
+not cover Maven installation. For installation instructions, visit
 https://www.tutorialspoint.com/maven/maven_environment_setup.htm.
 
 ## Integrating Maven
@@ -37,8 +39,7 @@ and ArtifactId.
 Specify project name and location, and click **Finish**.
 <img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj_page2.png"/>
 
-Above images are from
-https://www.jetbrains.com/help/idea/2017.1/getting-started-with-maven.html.
+_Above images are from https://www.jetbrains.com/help/idea/2017.1/getting-started-with-maven.html_.
 
 To convert an existing Java project to a Maven project, simply add a POM
 file to the project root directory, then reload the project. IntelliJ
@@ -46,10 +47,10 @@ will detect the POM file and display a dialog that allows you to add
 a Maven facet to the project.
 
 
-## Your First Maven Project
+# Your First Maven Project
 - In a fresh directory run:
 
-```java 
+```bash 
 mvn archetype:generate -DgroupId=com.5914maven.app1 -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
@@ -81,10 +82,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     <groupId>com.5914maven.app1</groupId>  
     <artifactId>my-application1</artifactId>  
     <version>1.0</version>  
-    <packaging>jar</packaging
+    <packaging>jar</packaging>
     
     <name>Maven Quick Start Archetype</name>  
-    <url>http://maven.apache.org</url
+    <url>http://maven.apache.org</url>
     
     <dependencies>  
         <dependency>  
