@@ -7,6 +7,45 @@ type = "post"
 	name = "Tech Group 1"
 	uri = "https://plus.google.com/115818189328363361527"
 +++
+## Overview
+
+Maven is a build automation tool for Java. Essentially it's to Java what
+makefiles are to C. Maven dynamically downloads Java libraries and
+plug-ins from Maven repositories, then stores them in a local cache.
+
+## Assumptions
+
+This tutorial assumes you are using IntelliJ IDEA. Instructions on how
+to get IDEA can be found on the JetBrains website, and is beyond the
+scope of this tutorial. Since Maven comes with IDEA, this tutorial will
+not cover Maven installation. For installation instructions, see
+https://www.tutorialspoint.com/maven/maven_environment_setup.htm.
+
+## Integrating Maven
+
+Maven can be added to a project only on project creation. To create a
+Maven project, go to **File > New > Project**. A dialog will appear.
+Select **Maven** in the menu on the left, then select desired project
+JDK. Click **Next**.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/creat_maven_project.png"/>
+
+If you want, specify properties for your Maven project. If your work is
+not intended for public use, you can use placeholder strings for GroupId
+and ArtifactId.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj.png"/>
+
+Specify project name and location, and click **Finish**.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj_page2.png"/>
+
+Above images are from
+https://www.jetbrains.com/help/idea/2017.1/getting-started-with-maven.html.
+
+To convert an existing Java project to a Maven project, simply add a POM
+file to the project root directory, then reload the project. IntelliJ
+will detect the POM file and display a dialog that allows you to add
+a Maven facet to the project.
+
+
 ## Your First Maven Project
 - In a fresh directory run:
 
@@ -74,4 +113,3 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 - Then, run `java com.5914maven.app1.App` to see `Hello World!` appear!!!
 - You can also package the app into your desired format (we are using jar, defined in the POM) by running `mvn package`.
 - And then run with `java -cp target/my-app-1.0-SNAPSHOT.jar com.5914maven.app1.App`
-
