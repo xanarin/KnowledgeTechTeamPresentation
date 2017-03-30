@@ -1,4 +1,4 @@
-baseurl = "https://maven.848.productions"
+baseurl = "http://docs.848.productions/Maven"
 languageCode = "en-us"
 title = "Maven Tutorial"
 theme = "hyde"
