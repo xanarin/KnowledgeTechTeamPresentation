@@ -7,6 +7,12 @@ type = "post"
 	name = "Tech Group 1"
 	uri = "https://plus.google.com/115818189328363361527"
 +++
+## Overview
+
+Maven is a build automation tool for Java. Essentially it's to Java what
+makefiles are to C. Maven dynamically downloads Java libraries and
+plug-ins from Maven repositories, then stores them in a local cache.
+
 ## Assumptions
 
 This tutorial assumes you are using IntelliJ IDEA. Instructions on how
