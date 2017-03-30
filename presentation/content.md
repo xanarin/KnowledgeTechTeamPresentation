@@ -6,7 +6,7 @@
 ## Overview
 <br>
 ### 1. What is Maven?
-### 2. How do I use Maven?
+### 2. How does Maven work?
 ### 3. What do I need to use Maven?
 ### 4. Your first Maven project
 
@@ -23,10 +23,16 @@ _TL;DR: Maven is a project management tool based on the Project Object Model (PO
 
 ---
 
-## How does it work?
+## Uses
+-	Building projects
+- Dependency management
+- Documentation/Logging
 
-Handles project dependencies by searching and linking from several
-repositories:
+---
+
+## How does Maven Work?
+
+Handles project dependencies by searching and linking from several repositories:
 
 1. Local
 2. Central

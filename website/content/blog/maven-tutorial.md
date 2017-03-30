@@ -5,12 +5,9 @@ blogimport = true
 type = "post"
 [author]
 	name = "Tech Group 1"
-	uri = "https://plus.google.com/115818189328363361527"
 +++
 
-# Maven Introduction
-## The What and the Why
-### What is Maven?
+# What is Maven?
 #### *TL;DR: Maven is a project management tool based on the Project Object Model (POM)*
 
 Maven is a build automation tool built by Apache primarily used for Java projects.
@@ -52,46 +49,43 @@ repositories (stores for .jar files). There are three different types:
 
 ### Local Repositories
 
-A local repository is located in your local system. It is created by the maven when you run any maven command.
-This is the location that maven looks for first when looking for dependencies
-your project needs.
+A local repository is located in your local system. It is created by the maven when you run any maven command. This is the location that maven looks for first when looking for dependencies your project needs.
 
 ### Central Repositories
 
-A central repository is located on the internet and is the second stop maven searches for dependencies that you
- specified. It has been created by the apache maven community itself,
-so there's nothing you need to do to set it up. You can locate the repo at http://repo1.maven.org/maven2/.
+A central repository is located on the internet and is the second stop maven searches for dependencies that you specified. It has been created by the Apache Maven community itself, so there's nothing you need to do to set it up. You can locate the repo at http://repo1.maven.org/maven2/.
 The central repository contains a lot of common libraries that can be viewed at http://search.maven.org/#browse.
 
 ### Remote Repositories
 
-A remote repository is located on the web as well, but is missing from the central repo.
-This is the third and last location maven will search for dependencies. Most
-libraries may be missing from the central repo, such as the JBoss library, so we
- need to define a remote repository in our project if we wish to use these dependencies.
+A remote repository is located on the web as well, but is missing from the central repo. This is the third and last location maven will search for dependencies. Most libraries may be missing from the central repo, such as the JBoss library, so we need to define a remote repository in our project if we wish to use these dependencies.
 
-Now that we know the basics of what maven is, how do we actually use it to define dependencies?
-This next part of this tutorial will take your through this process step by step.
+Now that we know the basics of what maven is, how do we actually use it to define dependencies? The next part of this tutorial will take your through this process step by step.
 
-# Introduction to Maven
+# Installing Maven
+If you have Java, you can get Maven with little trouble.
 
-## Overview
+## Installation Procedure
+1. Download release from [Apache Maven](https://maven.apache.org/download.cgi) website
+2. Extract archive
+3. Add the Maven `/bin` directory to PATH
+4. Run `mvn -v`, and you should see something similar to this:
 
-Maven is a build automation tool for Java. Essentially, it's to Java what
-makefiles are to C. Maven dynamically downloads Java libraries and
-plug-ins from Maven repositories, then stores them in a local cache.
+```bash
+Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T11:41:47-05:00)
+Maven home: /usr/local/Cellar/maven/3.3.9/libexec
+Java version: 1.8.0_73, vendor: Oracle Corporation
+Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.12.3", arch: "x86_64", family: "mac"
+```
 
-## Assumptions
+## IDE Integration
+If you're using [IntelliJ](https://www.jetbrains.com/idea/), then Maven is already built in for you!
 
-This tutorial assumes you are using IntelliJ IDEA. Instructions on how
-to get IDEA can be found on the JetBrains website, and is beyond the
-scope of this tutorial. Since Maven comes with IDEA, this tutorial will
-not cover Maven installation. For installation instructions, visit
-https://www.tutorialspoint.com/maven/maven_environment_setup.htm.
+If you're using [Eclipse](https://eclipse.org/), you can install [M2Eclipse](https://eclipse.org/m2e/) to enable first-class support for Maven.
 
-## Integrating Maven
-
-### In A New Project
+### Add Maven to New Project - IntelliJ
 
 Maven can be added to a project on project creation. To create a
 Maven project, go to **File > New > Project**. A dialog will appear.
@@ -109,7 +103,7 @@ Specify project name and location, and click **Finish**.
 
 _Above images are from https://www.jetbrains.com/help/idea/2017.1/getting-started-with-maven.html_.
 
-### In An Existing Project
+### Add Maven to Existing Project - IntelliJ
 
 To convert an existing Java project to a Maven project, simply add a POM
 file to the project root directory, then reload the project. IntelliJ
@@ -137,7 +131,7 @@ my-app
 
 You can see the resulting directory structure contains two source files `App.java` and `AppTest.java`. Opening them reveals that this is your standard Java Hello World! project.
 
-In `AppTest.java` you see it imports JUnit libraries. You realize you don't have those downloaded, so you cannot just run javac. How would you go out and download them? Enter Maven and the other file you generated: `pom.xml`.
+In `AppTest.java` you see it imports JUnit libraries. You realize you don't have those downloaded, so you cannot just run `javac`. How would you go out and download them? Enter Maven and the other file you generated: `pom.xml`.
 
 ## The Project Object Model
 Every Maven project requires a `pom.xml` file. This file contains everything Maven needs to know about your project. Here is an example of a POM file:
@@ -172,9 +166,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 ### POM elements
 - `project` - Mandatory root element.
 - `groupId` - Name of the group the project belongs to. Collection of artifacts.
-- `artifactId` - Unit of inidivdual project under a group.
+- `artifactId` - Unit of individual project under a group.
 - `packaging` - Format of how to package project when `mvn package` is run.
-- `dependencies` - Root for list of depenencies.
+- `dependencies` - Root for list of dependencies.
 - `dependency` - Individual unit of a project dependency. Needs a `groupId`, `artifactId`, and a `version`.
 - `scope` - Scope level for a project or dependency. Can be `compile`, `runtime`, `test`, and `system`.
 
@@ -182,7 +176,6 @@ Maven parses `pom.xml` when most `mvn` commands are run. For example, when you r
 
 ## Running Your First Maven Project
 At the top level of the your project (where `pom.xml` lives), run ``mvn clean compile``. You will see some output from downloading libraries the first time. The first run will be slower than most consecutive runs due to downloading libraries for the first time.  
-Run `java com.5914maven.app1.App` to see `Hello World!` appear!!!  
+Run `java com.5914maven.app1.App` to see the message _"Hello World!"_ appear! 
 
-You can also package the app into your desired format (we are using jar, defined in the POM) by running `mvn package`.  
-Run with `java -cp target/my-app-1.0-SNAPSHOT.jar com.5914maven.app1.App`.  
+You can also package the app into your desired format (we are using jar, defined in the POM) by running `mvn package`. You can run the newly-packaged app with `java -cp target/my-app-1.0-SNAPSHOT.jar com.5914maven.app1.App`.  
