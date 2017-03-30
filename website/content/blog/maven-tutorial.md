@@ -15,6 +15,21 @@ scope of this tutorial. Since Maven comes with IDEA, this tutorial will
 not cover Maven installation. For installation instructions, see
 https://www.tutorialspoint.com/maven/maven_environment_setup.htm.
 
-## Using Maven
+## Integrating Maven
 
+Maven can be added to a project only on project creation. To create a
+Maven project, go to **File > New > Project**. A dialog will appear.
+Select **Maven** in the menu on the left, then select desired project
+JDK. Click **Next**.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/creat_maven_project.png"/>
+
+If you want, specify properties for your Maven project. If your work is
+not intended for public use, you can use placeholder strings for GroupId
+and ArtifactId.
+<img src="https://www.jetbrains.com/help/img/idea/2017.1/new_maven_proj.png"/>
+
+Specify project name and location, and click **Finish**.
+
+Above images are from
+https://www.jetbrains.com/help/idea/2017.1/getting-started-with-maven.html.
 
